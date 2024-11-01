@@ -6,5 +6,23 @@
 
 {% block content %}
     <!--page content-->
-    <h1>Page 1</h1>
+    <h1>Information about Countries</h1>
+	<form action="/p1">
+          <select name="country"> <!-- A select element creates a drop-down box with options to select from. Note: add onchange="this.form.submit()" to submit/update the form when an option is selected.  Usefull for then displaying county options. -->
+            {% for c in countries %} <!-- Loop through the list of states and add an option element for each state -->
+                <option value="{{ c }}">{{ c }}</option>
+            {% endfor %}
+          </select>
+          <br><br>
+          <input type="submit" value="Get a fun fact!">
+        </form>
+		{% if showing == "yes" %}
+			<p>capital city: {{city}}</p>
+			<p>government: {{government}}</p>
+			<p>population: {{population}}</p>
+			<p>surface area: {{area}} square kilometers</p>
+			<p>region: {{location}}</p>
+			<p>continent: {{continent}}</p>
+		
+	    {% endif %}
 {% endblock %}
